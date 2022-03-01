@@ -9,12 +9,12 @@ class Backend {
     required this.dioClient,
     required this.apiKey,
   }) {
-    // dioClient.options.baseUrl = backendUrl;
+    dioClient.options.baseUrl = backendUrl;
+    dioClient.options.queryParameters = {"apiKey": apiKey};
+  }
 
-    Future getHeadlines() async {
-      final data = await dioClient.get(
-          "https://newsapi.org/v2/top-headlines?country=us&apiKey=aa057f1293fa45889831b52637401949");
-      return data;
-    }
+  Future getHeadlines() async {
+    final data = await dioClient.get("/top-headlines?country=us");
+    return data;
   }
 }

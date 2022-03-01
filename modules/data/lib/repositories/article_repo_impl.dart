@@ -1,8 +1,9 @@
+import 'package:data/data.dart';
 import "package:domain/domain.dart";
 
 class ArticleRepoImpl extends ArticleRepository {
-  final String baseUrl;
-  ArticleRepoImpl({required this.baseUrl});
+  final Backend backend;
+  ArticleRepoImpl({required this.backend});
 
   @override
   Future<List<ArticleModel>> getArticlesWithFilters(
