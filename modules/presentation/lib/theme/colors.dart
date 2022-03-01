@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 class AppColors {
   AppColors._();
 
-  static const Color primary_color = Color(0xFF6f36bf);
-  static const Color light_purple = Color.fromRGBO(246, 235, 253, 1);
-  static const Color dark_purple = Color.fromRGBO(86, 39, 164, 1);
+  static const Color primaryColor = Color(0xFF6f36bf);
+  static const Color lightPurple = Color.fromRGBO(246, 235, 253, 1);
+  static const Color darkPurple = Color.fromRGBO(86, 39, 164, 1);
   static const Color red = Color.fromRGBO(255, 59, 59, 1);
   static const Color yellow = Color.fromRGBO(252, 186, 3, 1);
   static const Color blue = Color.fromRGBO(5, 131, 242, 1);
   static const Color green = Color.fromRGBO(63, 219, 141, 1);
-  static const Color light_gray = Color.fromRGBO(239, 239, 239, 1);
+  static const Color lightGray = Color.fromRGBO(239, 239, 239, 1);
   static const Color white = Colors.white;
   static const Color black = Colors.black;
   static const MaterialColor kGrey = MaterialColor(

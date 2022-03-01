@@ -12,7 +12,7 @@ class PrimaryButton extends StatelessWidget {
   final Function()? onPressed;
   const PrimaryButton({
     Key? key,
-    this.color = AppColors.primary_color,
+    this.color = AppColors.primaryColor,
     this.text,
     this.isLoading = false,
     this.disabled = false,
@@ -30,7 +30,7 @@ class PrimaryButton extends StatelessWidget {
         onPressed: () => onPressed != null ? onPressed!() : null,
         style: ElevatedButton.styleFrom(
           elevation: 0,
-          primary: disabled ? AppColors.light_gray : color,
+          primary: disabled ? AppColors.lightGray : color,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(58),
           ),

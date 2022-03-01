@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/pages/home.dart';
 import 'package:news_app/routes/routes.gr.dart';
+import 'package:presentation/presentation.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
 
 class MyApp extends StatelessWidget {
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       routerDelegate: _appRouter.delegate(),
       routeInformationParser: _appRouter.defaultRouteParser(),
-      // theme: appTheme,
+      theme: appTheme,
       builder: (BuildContext? context, Widget? widget) =>
           ResponsiveWrapper.builder(
         widget,

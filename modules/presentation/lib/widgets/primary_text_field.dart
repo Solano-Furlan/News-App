@@ -64,8 +64,7 @@ class _PrimaryTextFieldState extends State<PrimaryTextField> {
         Text(
           widget.label ?? "",
           style: TextStyle(
-            color:
-                hasFocus ? AppColors.primary_color : AppColors.kGrey.shade700,
+            color: hasFocus ? AppColors.primaryColor : AppColors.kGrey.shade700,
             fontWeight: FontWeight.bold,
             fontSize: 18,
           ),
@@ -192,7 +191,7 @@ class _PrimaryTextFieldState extends State<PrimaryTextField> {
                         BorderRadius.all(Radius.circular(widget.radius)),
                     borderSide: const BorderSide(
                       width: 2,
-                      color: AppColors.primary_color,
+                      color: AppColors.primaryColor,
                     ),
                   ),
                   enabledBorder: OutlineInputBorder(
@@ -200,7 +199,7 @@ class _PrimaryTextFieldState extends State<PrimaryTextField> {
                         BorderRadius.all(Radius.circular(widget.radius)),
                     borderSide: const BorderSide(
                       width: 2,
-                      color: AppColors.light_gray,
+                      color: AppColors.lightGray,
                     ),
                   ),
                   fillColor: widget.whiteBackground
@@ -209,7 +208,7 @@ class _PrimaryTextFieldState extends State<PrimaryTextField> {
                           ? Colors.white
                           : currentValue.isNotEmpty
                               ? Colors.white
-                              : AppColors.light_gray,
+                              : AppColors.lightGray,
                   hintStyle: TextStyle(
                     color: AppColors.kGrey.shade400,
                   ),
