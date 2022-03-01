@@ -37,6 +37,12 @@ dependencies:
   responsive_framework: ^0.1.7
   presentation:
     path: "modules/presentation"
+  domain:
+    path: "modules/domain"
+  data:
+    path: "modules/data"
+  core:
+    path: "modules/core"
 
 dev_dependencies:
   flutter_test:
