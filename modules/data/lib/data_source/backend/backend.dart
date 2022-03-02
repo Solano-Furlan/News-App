@@ -14,7 +14,6 @@ class Backend {
   }
 
   Future getHeadlines() async {
-    final data = await dioClient.get("/top-headlines?country=us");
-    return data;
+    return dioClient.get("/top-headlines?country=us");
   }
 }

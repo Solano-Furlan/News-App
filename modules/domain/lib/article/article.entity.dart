@@ -20,4 +20,18 @@ class ArticleModel {
     this.description,
     this.content,
   });
+
+  factory ArticleModel.fromJson(Map<String, dynamic> parsedJson) {
+    return ArticleModel(
+      id: parsedJson['id'].toString(),
+      source: parsedJson['source']['name'].toString(),
+      author: parsedJson['author'].toString(),
+      url: parsedJson['url'].toString(),
+      urlToImage: parsedJson['urlToImage'].toString(),
+      publishedAt: DateTime.parse(parsedJson['publishedAt'].toString()),
+      title: parsedJson['title'].toString(),
+      description: parsedJson['description'].toString(),
+      content: parsedJson['content'].toString(),
+    );
+  }
 }
