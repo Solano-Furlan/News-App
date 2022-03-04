@@ -47,13 +47,13 @@ class NewsItem extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           AutoSizeText(
-            "article.publishedAt",
+            article.publishedAt.toString(),
             maxLines: 1,
             style: appTheme.textTheme.labelSmall,
           ),
           const SizedBox(height: 10),
           AutoSizeText(
-            article.source ?? "",
+            article.author ?? article.source ?? "",
             maxLines: 1,
             style: appTheme.textTheme.labelSmall,
           ),
