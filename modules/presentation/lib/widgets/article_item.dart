@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:domain/domain.dart';
 import 'package:presentation/presentation.dart';
 
-class NewsItem extends StatelessWidget {
-  const NewsItem({
+class ArticleItem extends StatelessWidget {
+  const ArticleItem({
     Key? key,
     required this.article,
     required this.onPressed,
@@ -18,8 +18,8 @@ class NewsItem extends StatelessWidget {
     return TextButton(
       onPressed: () => onPressed(),
       style: TextButton.styleFrom(
-        padding: const EdgeInsets.all(0),
-        primary: Colors.grey.shade200,
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+        primary: Colors.black12,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -32,12 +32,17 @@ class NewsItem extends StatelessWidget {
               color: Colors.grey.shade200,
               borderRadius: BorderRadius.circular(24),
             ),
-            child: article.urlToImage != null
+            child: article.urlToImage != null &&
+                    !article.urlToImage!.contains("null")
                 ? Image.network(
                     article.urlToImage!,
                     fit: BoxFit.cover,
                   )
-                : null,
+                : Image.asset(
+                    AppImages.newsBackground,
+                    fit: BoxFit.fill,
+                    package: "presentation",
+                  ),
           ),
           const SizedBox(height: 15),
           AutoSizeText(

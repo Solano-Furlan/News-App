@@ -3,54 +3,61 @@ import 'package:domain/article/article.entity.dart';
 import 'package:flutter/material.dart';
 import 'package:presentation/presentation.dart';
 
-class FlexibleHeader extends StatelessWidget {
-  final ArticleModel article;
-  const FlexibleHeader({
+class FlexibleArticleHeader extends StatelessWidget {
+  const FlexibleArticleHeader({
     Key? key,
     required this.article,
+    required this.heightCallback,
   }) : super(key: key);
+  final ArticleModel? article;
+  final Function(double) heightCallback;
 
   @override
   Widget build(BuildContext context) {
+    const double expandedHeight = 500.0;
     return SliverOverlapAbsorber(
       handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
       sliver: SliverAppBar(
         collapsedHeight: 100,
-        expandedHeight: 450,
+        expandedHeight: expandedHeight,
         pinned: true,
         primary: true,
+        leading: const SizedBox(),
         centerTitle: true,
         backgroundColor: Colors.transparent,
         forceElevated: false,
         flexibleSpace: LayoutBuilder(
           builder: (BuildContext context, BoxConstraints constraints) {
+            heightCallback(constraints.constrainHeight());
             return Container(
               width: double.infinity,
-              height: 450,
+              height: expandedHeight,
               clipBehavior: Clip.hardEdge,
               decoration: BoxDecoration(
                 color: Colors.grey.shade400,
-                borderRadius: constraints.constrainHeight() > 170
-                    ? const BorderRadius.only(
-                        bottomLeft: Radius.circular(35),
-                        bottomRight: Radius.circular(35),
-                      )
-                    : null,
               ),
               child: Stack(
                 children: [
-                  if (article.url != null &&
+                  if (article != null &&
+                      article!.url != null &&
                       constraints.constrainHeight() > 170)
                     SizedBox(
                       width: double.infinity,
-                      height: 450,
-                      child: Image.network(
-                        article.urlToImage!,
-                        fit: BoxFit.cover,
-                      ),
+                      height: expandedHeight,
+                      child: article!.urlToImage != null &&
+                              !article!.urlToImage!.contains("null")
+                          ? Image.network(
+                              article!.urlToImage!,
+                              fit: BoxFit.cover,
+                            )
+                          : Image.asset(
+                              AppImages.newsBackground,
+                              fit: BoxFit.fill,
+                              package: "presentation",
+                            ),
                     ),
                   Container(
-                    height: 450,
+                    height: expandedHeight,
                     width: double.infinity,
                     decoration: BoxDecoration(
                       color: constraints.constrainHeight() < 170
@@ -61,7 +68,7 @@ class FlexibleHeader extends StatelessWidget {
                           : LinearGradient(
                               colors: [
                                   Colors.black.withOpacity(.3),
-                                  Colors.black.withOpacity(.8),
+                                  Colors.black.withOpacity(1),
                                 ],
                               begin: Alignment.topCenter,
                               end: Alignment.bottomCenter,
@@ -88,9 +95,9 @@ class FlexibleHeader extends StatelessWidget {
                                 padding: const EdgeInsets.all(0),
                                 splashRadius: 34,
                                 alignment: Alignment.centerLeft,
-                                onPressed: () {},
+                                onPressed: () => Navigator.of(context).pop(),
                                 icon: const Icon(
-                                  Icons.menu,
+                                  Icons.arrow_back,
                                   color: Colors.white,
                                   size: 34,
                                 ),
@@ -108,58 +115,45 @@ class FlexibleHeader extends StatelessWidget {
                               const SizedBox(width: 50)
                             ],
                           ),
-                          if (constraints.constrainHeight() > 280) ...[
+                          if (constraints.constrainHeight() > 170)
+                            const Spacer(),
+                          if (constraints.constrainHeight() > 430) ...[
                             const SizedBox(height: 50),
-                            IntrinsicWidth(
-                              child: Container(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 30),
-                                height: 55,
-                                decoration: BoxDecoration(
-                                  color: Colors.grey.shade300.withOpacity(.6),
-                                  borderRadius: BorderRadius.circular(40),
-                                ),
-                                alignment: Alignment.center,
-                                child: const Text(
-                                  "News of the day",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 20,
+                            Column(
+                              children: [
+                                Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 30),
+                                  height: 55,
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey.shade300.withOpacity(.6),
+                                    borderRadius: BorderRadius.circular(40),
+                                  ),
+                                  alignment: Alignment.center,
+                                  child: AutoSizeText(
+                                    article!.source ?? "",
+                                    maxLines: 1,
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 20,
+                                    ),
                                   ),
                                 ),
-                              ),
+                              ],
                             ),
-                            const SizedBox(height: 20),
+                            const SizedBox(height: 30),
                           ],
-                          if (constraints.constrainHeight() > 375)
+                          if (constraints.constrainHeight() > 355) ...[
                             AutoSizeText(
-                              article.title ?? "",
+                              article?.title ?? "",
                               style: const TextStyle(
                                 color: Colors.white,
-                                fontSize: 32,
+                                fontSize: 30,
                                 fontWeight: FontWeight.bold,
                               ),
                               maxLines: 3,
                             ),
-                          if (constraints.constrainHeight() > 400) ...[
-                            const SizedBox(height: 25),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Text(
-                                  "Learn more",
-                                  style: appTheme.textTheme.headline2!.copyWith(
-                                    fontSize: 20,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                const SizedBox(width: 10),
-                                const Icon(
-                                  Icons.arrow_forward_rounded,
-                                  color: Colors.white,
-                                )
-                              ],
-                            ),
+                            const SizedBox(height: 70),
                           ]
                         ],
                       ),
