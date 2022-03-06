@@ -8,9 +8,13 @@ class FlexibleArticleHeader extends StatelessWidget {
     Key? key,
     required this.article,
     required this.heightCallback,
+    required this.isSaved,
+    required this.onSavedPressed,
   }) : super(key: key);
   final ArticleModel? article;
+  final bool isSaved;
   final Function(double) heightCallback;
+  final Function() onSavedPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -112,12 +116,25 @@ class FlexibleArticleHeader extends StatelessWidget {
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              const SizedBox(width: 50)
+                              IconButton(
+                                iconSize: 34,
+                                padding: const EdgeInsets.all(0),
+                                splashRadius: 34,
+                                alignment: Alignment.center,
+                                onPressed: () => onSavedPressed(),
+                                icon: Icon(
+                                  isSaved
+                                      ? Icons.favorite
+                                      : Icons.favorite_border,
+                                  color: Colors.white,
+                                  size: 31,
+                                ),
+                              ),
                             ],
                           ),
                           if (constraints.constrainHeight() > 170)
                             const Spacer(),
-                          if (constraints.constrainHeight() > 430) ...[
+                          if (constraints.constrainHeight() > 440) ...[
                             const SizedBox(height: 50),
                             Column(
                               children: [

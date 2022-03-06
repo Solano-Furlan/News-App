@@ -3,6 +3,7 @@ import 'package:domain/domain.dart';
 import 'package:flutter/material.dart';
 import 'package:news_app/dependencies/dependencies.dart';
 import 'package:news_app/routes/routes.gr.dart';
+import 'package:news_app/widgets/botoom_app_bar.dart';
 import 'package:presentation/presentation.dart';
 
 class HomePage extends StatefulWidget {
@@ -71,7 +72,7 @@ class _HomePageState extends State<HomePage> {
                   ),
             const CustomBottomAppBar(
               currentRoute: "",
-            )
+            ),
           ],
         ),
       ),

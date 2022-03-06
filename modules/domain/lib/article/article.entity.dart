@@ -1,3 +1,5 @@
+import 'package:uuid/uuid.dart';
+
 class ArticleModel {
   final String? id;
   final String? source;
@@ -22,8 +24,9 @@ class ArticleModel {
   });
 
   factory ArticleModel.fromJson(Map<String, dynamic> parsedJson) {
+    var uuid = const Uuid();
     return ArticleModel(
-      id: parsedJson['id'].toString(),
+      id: uuid.v4(),
       source: parsedJson['source']['name'].toString(),
       author: parsedJson['author'].toString(),
       url: parsedJson['url'].toString(),

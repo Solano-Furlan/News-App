@@ -1,4 +1,6 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:news_app/routes/routes.gr.dart';
 
 class CustomBottomAppBar extends StatelessWidget {
   final String currentRoute;
@@ -22,7 +24,8 @@ class CustomBottomAppBar extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () =>
+                      AutoRouter.of(context).replaceAll([const HomeRoute()]),
                   icon: const Icon(
                     Icons.home,
                     size: 30,
@@ -36,9 +39,10 @@ class CustomBottomAppBar extends StatelessWidget {
                   ),
                 ),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () => AutoRouter.of(context)
+                      .replaceAll([const SavedArticlesRoute()]),
                   icon: const Icon(
-                    Icons.manage_accounts_rounded,
+                    Icons.favorite_border_outlined,
                     size: 30,
                   ),
                 ),

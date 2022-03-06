@@ -1,5 +1,7 @@
 import 'package:domain/article/article.entity.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:news_app/bloc/articles_bloc.dart';
 import 'package:presentation/presentation.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -22,14 +24,46 @@ class _ArticlePageState extends State<ArticlePage> {
         physics: const BouncingScrollPhysics(),
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) =>
             <Widget>[
-          FlexibleArticleHeader(
-            article: widget.article,
-            heightCallback: (val) {
-              WidgetsBinding.instance!.addPostFrameCallback((_) {
-                setState(() {
-                  headerHeight = val;
-                });
-              });
+          BlocBuilder<ArticlesBloc, ArticlesState>(
+            builder: (context, state) {
+              if (state is SavedArticlesLoaded) {
+                return FlexibleArticleHeader(
+                  article: widget.article,
+                  isSaved:
+                      state.savedArticles.any((e) => e.id == widget.article.id),
+                  onSavedPressed: () {
+                    if (state.savedArticles
+                            .any((e) => e.id == widget.article.id) ==
+                        false) {
+                      print("object");
+                      context.read<ArticlesBloc>().add(
+                            SaveArticle(
+                              article: widget.article,
+                            ),
+                          );
+                    } else {
+                      context.read<ArticlesBloc>().add(
+                            DeleteSavedArticle(
+                              articleId: widget.article.id!,
+                            ),
+                          );
+                    }
+                  },
+                  heightCallback: (val) {
+                    WidgetsBinding.instance!.addPostFrameCallback((_) {
+                      setState(() {
+                        headerHeight = val;
+                      });
+                    });
+                  },
+                );
+              }
+              return FlexibleArticleHeader(
+                article: null,
+                isSaved: false,
+                onSavedPressed: () {},
+                heightCallback: (_) {},
+              );
             },
           ),
         ],

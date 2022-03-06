@@ -15,7 +15,6 @@ class ArticleRepoImpl extends ArticleRepository {
 
   @override
   Future<List<ArticleModel>> getTopHeadlines({ArticleFilter? filter}) async {
-    // final Map parsed = json.decode(res);
     final res = await backend.getHeadlines();
     var data = jsonDecode(res.toString());
 
