@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:news_app/routes/routes.gr.dart';
 
 class CustomBottomAppBar extends StatelessWidget {
-  final String currentRoute;
-  const CustomBottomAppBar({Key? key, required this.currentRoute})
-      : super(key: key);
+  const CustomBottomAppBar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +30,8 @@ class CustomBottomAppBar extends StatelessWidget {
                   ),
                 ),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () =>
+                      AutoRouter.of(context).replaceAll([const SearchRoute()]),
                   icon: const Icon(
                     Icons.search,
                     size: 30,

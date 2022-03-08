@@ -23,7 +23,8 @@ class ArticlesBloc extends Bloc<ArticlesEvent, ArticlesState> {
     if (state is SavedArticlesLoaded) {
       emit(
         SavedArticlesLoaded(
-          savedArticles: List.from(state.savedArticles)..add(event.article),
+          savedArticles: List.from(state.savedArticles)
+            ..insert(0, event.article),
         ),
       );
     }

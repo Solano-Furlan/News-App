@@ -31,16 +31,16 @@ class AppColors {
   static const MaterialColor primarySwatch = MaterialColor(
     0xFF6f36bf,
     {
-      50: Color(0xFF6f36bf),
-      100: Color(0xFF6f36bf),
-      200: Color(0xFF6f36bf),
-      300: Color(0xFF6f36bf),
-      400: Color(0xFF6f36bf),
-      500: Color(0xFF6f36bf),
-      600: Color(0xFF6f36bf),
-      700: Color(0xFF6f36bf),
-      800: Color(0xFF6f36bf),
-      900: Color(0xFF6f36bf),
+      50: Colors.black,
+      100: Colors.black,
+      200: Colors.black,
+      300: Colors.black,
+      400: Colors.black,
+      500: Colors.black,
+      600: Colors.black,
+      700: Colors.black,
+      800: Colors.black,
+      900: Colors.black,
     },
   );
 }

@@ -35,7 +35,6 @@ class _ArticlePageState extends State<ArticlePage> {
                     if (state.savedArticles
                             .any((e) => e.id == widget.article.id) ==
                         false) {
-                      print("object");
                       context.read<ArticlesBloc>().add(
                             SaveArticle(
                               article: widget.article,
