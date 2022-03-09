@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:news_app/routes/routes.gr.dart';
 import 'package:presentation/widgets/botoom_app_bar.dart';
+import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -29,10 +30,16 @@ class HomePage extends StatelessWidget {
                     child: child,
                   ),
                 ),
-                CustomBottomAppBar(
-                  setActiveIndex: (index) => tabsRouter.setActiveIndex(index),
-                  currentIndex: tabsRouter.activeIndex,
-                ),
+                KeyboardVisibilityBuilder(
+                    builder: (context, isKeyboardVisible) {
+                  return isKeyboardVisible
+                      ? const SizedBox()
+                      : CustomBottomAppBar(
+                          setActiveIndex: (index) =>
+                              tabsRouter.setActiveIndex(index),
+                          currentIndex: tabsRouter.activeIndex,
+                        );
+                }),
               ],
             ),
           );
