@@ -31,15 +31,16 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 KeyboardVisibilityBuilder(
-                    builder: (context, isKeyboardVisible) {
-                  return isKeyboardVisible
-                      ? const SizedBox()
-                      : CustomBottomAppBar(
-                          setActiveIndex: (index) =>
-                              tabsRouter.setActiveIndex(index),
-                          currentIndex: tabsRouter.activeIndex,
-                        );
-                }),
+                  builder: (context, isKeyboardVisible) {
+                    return isKeyboardVisible
+                        ? const SizedBox()
+                        : CustomBottomAppBar(
+                            setActiveIndex: (index) =>
+                                tabsRouter.setActiveIndex(index),
+                            currentIndex: tabsRouter.activeIndex,
+                          );
+                  },
+                ),
               ],
             ),
           );
