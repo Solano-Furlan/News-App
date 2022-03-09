@@ -6,9 +6,11 @@ class SearchBar extends StatefulWidget {
   final TextEditingController controller;
   final Function() onPressedFilter;
   final double radius;
+  final bool lightTheme;
   const SearchBar({
     Key? key,
     required this.controller,
+    this.lightTheme = false,
     required this.onPressedFilter,
     this.radius = 14,
   }) : super(key: key);
@@ -81,9 +83,11 @@ class _SearchBarState extends State<SearchBar> {
                 color: AppColors.lightGray,
               ),
             ),
-            fillColor: hasFocus
-                ? AppColors.lightGray.withOpacity(.3)
-                : AppColors.lightGray,
+            fillColor: widget.lightTheme
+                ? Colors.white
+                : hasFocus
+                    ? AppColors.lightGray.withOpacity(.3)
+                    : AppColors.lightGray,
             hintStyle: TextStyle(
               color: AppColors.kGrey.shade400,
             ),

@@ -42,34 +42,29 @@ class _HeadlinesPageState extends State<HeadlinesPage> {
                 ),
         ),
       ],
-      body: Column(
-        children: [
-          articles.isEmpty
-              ? const Spacer()
-              : Expanded(
-                  child: ListView.separated(
-                    padding: const EdgeInsets.only(
-                      top: 130,
-                      bottom: 60,
-                    ),
-                    physics: const BouncingScrollPhysics(),
-                    separatorBuilder: (context, index) =>
-                        const SizedBox(height: 5),
-                    itemCount: articles.length - 1,
-                    itemBuilder: (context, index) {
-                      return ArticleItem(
-                        onPressed: () => AutoRouter.of(context).push(
-                          ArticleRoute(
-                            article: articles[index + 1],
-                          ),
-                        ),
-                        article: articles[index + 1],
-                      );
-                    },
-                  ),
+      body: articles.isEmpty
+          ? const SizedBox()
+          : Expanded(
+              child: ListView.separated(
+                padding: const EdgeInsets.only(
+                  top: 130,
+                  bottom: 60,
                 ),
-        ],
-      ),
+                physics: const BouncingScrollPhysics(),
+                separatorBuilder: (context, index) => const SizedBox(height: 5),
+                itemCount: articles.length - 1,
+                itemBuilder: (context, index) {
+                  return ArticleItem(
+                    onPressed: () => AutoRouter.of(context).push(
+                      ArticleRoute(
+                        article: articles[index + 1],
+                      ),
+                    ),
+                    article: articles[index + 1],
+                  );
+                },
+              ),
+            ),
     );
   }
 }
