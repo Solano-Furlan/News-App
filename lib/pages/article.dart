@@ -41,11 +41,23 @@ class _ArticlePageState extends State<ArticlePage> {
                             ),
                           );
                     } else {
-                      context.read<ArticlesBloc>().add(
-                            DeleteSavedArticle(
-                              articleId: widget.article.id!,
-                            ),
-                          );
+                      showDialog(
+                          context: context,
+                          builder: (context) {
+                            return ConfirmationPopup(
+                              title: "Remove Article",
+                              text:
+                                  "Are you sure that you want to remove this article from the saved list?",
+                              onConfirmation: () {
+                                context.read<ArticlesBloc>().add(
+                                      DeleteSavedArticle(
+                                        articleId: widget.article.id!,
+                                      ),
+                                    );
+                                Navigator.of(context).pop();
+                              },
+                            );
+                          });
                     }
                   },
                   heightCallback: (val) {
