@@ -9,3 +9,4 @@ export 'widgets/article_item.dart';
 export 'widgets/flexible_headline_header.dart';
 export 'widgets/flexible_article_header.dart';
 export 'widgets/search_bar.dart';
+export 'widgets/botoom_app_bar.dart';

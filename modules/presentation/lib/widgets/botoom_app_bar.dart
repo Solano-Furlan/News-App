@@ -1,9 +1,13 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:news_app/routes/routes.gr.dart';
 
 class CustomBottomAppBar extends StatelessWidget {
-  const CustomBottomAppBar({Key? key}) : super(key: key);
+  final int currentIndex;
+  final Function(int) setActiveIndex;
+  const CustomBottomAppBar({
+    Key? key,
+    required this.currentIndex,
+    required this.setActiveIndex,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,24 +26,21 @@ class CustomBottomAppBar extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 IconButton(
-                  onPressed: () =>
-                      AutoRouter.of(context).replaceAll([const HomeRoute()]),
+                  onPressed: () => setActiveIndex(0),
                   icon: const Icon(
                     Icons.home,
                     size: 30,
                   ),
                 ),
                 IconButton(
-                  onPressed: () =>
-                      AutoRouter.of(context).replaceAll([const SearchRoute()]),
+                  onPressed: () => setActiveIndex(1),
                   icon: const Icon(
                     Icons.search,
                     size: 30,
                   ),
                 ),
                 IconButton(
-                  onPressed: () => AutoRouter.of(context)
-                      .replaceAll([const SavedArticlesRoute()]),
+                  onPressed: () => setActiveIndex(2),
                   icon: const Icon(
                     Icons.favorite_border_outlined,
                     size: 30,
