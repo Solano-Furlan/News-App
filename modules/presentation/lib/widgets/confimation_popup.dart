@@ -87,7 +87,9 @@ class ConfirmationPopup extends StatelessWidget {
                       onPressed: () =>
                           onConfirmation != null ? onConfirmation!() : null,
                       style: TextButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(vertical: 30),
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 30,
+                        ),
                         primary: AppColors.kGrey.shade100,
                       ),
                       child: Text(
