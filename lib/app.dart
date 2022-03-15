@@ -1,7 +1,10 @@
+import 'package:domain/article/article.repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:news_app/bloc/articles_bloc.dart';
+import 'package:news_app/bloc/get_headlines_bloc/get_headlines_bloc.dart';
+import 'package:news_app/bloc/saved_aticles_bloc/saved_articles_bloc.dart';
+import 'package:news_app/dependencies/dependencies.dart';
 import 'package:news_app/routes/routes.gr.dart';
 import 'package:presentation/presentation.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
@@ -22,6 +25,11 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => ArticlesBloc()..add(GetSavedArticles()),
+        ),
+        BlocProvider(
+          create: (context) =>
+              GetHeadlinesBloc(articlesRepo: getIt<ArticleRepository>())
+                ..add(GetHeadlinesArticles()),
         ),
       ],
       child: MaterialApp.router(

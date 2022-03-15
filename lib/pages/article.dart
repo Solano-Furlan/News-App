@@ -1,7 +1,7 @@
 import 'package:domain/article/article.entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:news_app/bloc/articles_bloc.dart';
+import 'package:news_app/bloc/saved_aticles_bloc/saved_articles_bloc.dart';
 import 'package:presentation/presentation.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -24,7 +24,7 @@ class _ArticlePageState extends State<ArticlePage> {
         physics: const BouncingScrollPhysics(),
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) =>
             <Widget>[
-          BlocBuilder<ArticlesBloc, ArticlesState>(
+          BlocBuilder<ArticlesBloc, SavedArticlesState>(
             builder: (context, state) {
               if (state is SavedArticlesLoaded) {
                 return FlexibleArticleHeader(

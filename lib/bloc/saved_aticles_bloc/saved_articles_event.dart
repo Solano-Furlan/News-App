@@ -1,9 +1,9 @@
-part of 'articles_bloc.dart';
+part of 'saved_articles_bloc.dart';
 
 @immutable
-abstract class ArticlesEvent extends Equatable {}
+abstract class SavedArticlesEvent extends Equatable {}
 
-class GetSavedArticles extends ArticlesEvent {
+class GetSavedArticles extends SavedArticlesEvent {
   final List<ArticleModel> articles;
   GetSavedArticles({this.articles = const <ArticleModel>[]});
 
@@ -11,7 +11,7 @@ class GetSavedArticles extends ArticlesEvent {
   List<Object> get props => [articles];
 }
 
-class SaveArticle extends ArticlesEvent {
+class SaveArticle extends SavedArticlesEvent {
   final ArticleModel article;
   SaveArticle({required this.article});
 
@@ -19,7 +19,7 @@ class SaveArticle extends ArticlesEvent {
   List<Object> get props => [article];
 }
 
-class DeleteSavedArticle extends ArticlesEvent {
+class DeleteSavedArticle extends SavedArticlesEvent {
   final String articleId;
   DeleteSavedArticle({required this.articleId});
 

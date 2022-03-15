@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:news_app/bloc/articles_bloc.dart';
+import 'package:news_app/bloc/saved_aticles_bloc/saved_articles_bloc.dart';
 import 'package:news_app/routes/routes.gr.dart';
 import 'package:presentation/widgets/article_item.dart';
 
@@ -50,7 +50,7 @@ class SavedArticlesPage extends StatelessWidget {
             ],
           ),
         ),
-        BlocConsumer<ArticlesBloc, ArticlesState>(
+        BlocConsumer<ArticlesBloc, SavedArticlesState>(
           builder: (context, state) {
             if (state is ArticlesLoading) {
               return const Center(
