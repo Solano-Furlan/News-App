@@ -29,7 +29,7 @@ class AppColors {
     },
   );
   static const MaterialColor primarySwatch = MaterialColor(
-    0xFF6f36bf,
+    0xff000000,
     {
       50: Colors.black,
       100: Colors.black,

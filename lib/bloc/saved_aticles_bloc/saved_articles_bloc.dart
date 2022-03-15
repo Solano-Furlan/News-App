@@ -3,10 +3,10 @@ import 'package:domain/article/article.entity.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
-part 'articles_event.dart';
-part 'articles_state.dart';
+part 'saved_articles_event.dart';
+part 'saved_articles_state.dart';
 
-class ArticlesBloc extends Bloc<ArticlesEvent, ArticlesState> {
+class ArticlesBloc extends Bloc<SavedArticlesEvent, SavedArticlesState> {
   ArticlesBloc() : super(ArticlesInitial()) {
     on<GetSavedArticles>(_onGetSavedArticles);
     on<SaveArticle>(_onSaveArticle);
@@ -14,11 +14,11 @@ class ArticlesBloc extends Bloc<ArticlesEvent, ArticlesState> {
   }
 
   void _onGetSavedArticles(
-      GetSavedArticles event, Emitter<ArticlesState> emit) {
+      GetSavedArticles event, Emitter<SavedArticlesState> emit) {
     emit(SavedArticlesLoaded(savedArticles: event.articles));
   }
 
-  void _onSaveArticle(SaveArticle event, Emitter<ArticlesState> emit) {
+  void _onSaveArticle(SaveArticle event, Emitter<SavedArticlesState> emit) {
     final state = this.state;
     if (state is SavedArticlesLoaded) {
       emit(
@@ -31,7 +31,7 @@ class ArticlesBloc extends Bloc<ArticlesEvent, ArticlesState> {
   }
 
   void _onDeleteSavedArticle(
-      DeleteSavedArticle event, Emitter<ArticlesState> emit) {
+      DeleteSavedArticle event, Emitter<SavedArticlesState> emit) {
     final state = this.state;
     if (state is SavedArticlesLoaded) {
       emit(

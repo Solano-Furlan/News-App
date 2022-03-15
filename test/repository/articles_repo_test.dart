@@ -10,7 +10,7 @@ void main() {
   late DioAdapter dioAdapter;
   late ArticleRepoImpl articlesRepo;
   group(
-    "Articles Repository",
+    "Articles Repository Test",
     () {
       setUp(() {
         dio = Dio();
@@ -24,7 +24,7 @@ void main() {
         ));
       });
 
-      test('Get headlines test', () async {
+      test('Get Headlines test', () async {
         dioAdapter.onGet(
           "/top-headlines?country=us",
           (request) => request
