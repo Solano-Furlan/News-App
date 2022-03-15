@@ -11,7 +11,7 @@
 // ignore_for_file: type=lint
 
 import 'package:auto_route/auto_route.dart' as _i6;
-import 'package:domain/domain.dart' as _i8;
+import 'package:domain/article/article.entity.dart' as _i8;
 import 'package:flutter/material.dart' as _i7;
 
 import '../pages/article.dart' as _i2;

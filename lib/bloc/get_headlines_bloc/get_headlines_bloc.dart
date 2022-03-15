@@ -17,13 +17,9 @@ class GetHeadlinesBloc extends Bloc<GetHeadlinesEvent, GetHeadlinesState> {
       GetHeadlinesArticles event, Emitter<GetHeadlinesState> emit) async {
     emit(GetHeadlinesLoading());
     try {
-      print("getting");
-
       final headlines = await articlesRepo.getTopHeadlines();
-      print(headlines);
       emit(GetHeadlinesLoaded(healines: headlines));
     } catch (e) {
-      print(e);
       emit(GetHeadlinesError());
     }
   }

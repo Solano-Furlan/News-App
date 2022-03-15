@@ -1,9 +1,7 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:domain/domain.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/bloc/get_headlines_bloc/get_headlines_bloc.dart';
-import 'package:news_app/dependencies/dependencies.dart';
 import 'package:news_app/routes/routes.gr.dart';
 import 'package:presentation/presentation.dart';
 
