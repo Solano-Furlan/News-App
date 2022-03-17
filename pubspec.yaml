@@ -32,8 +32,8 @@ dependencies:
   equatable: ^2.0.3
   flutter_keyboard_visibility: ^5.2.0
   firebase_remote_config: ^2.0.2
-  firebase_auth: ^1.2.0
-  firebase_core: ^1.2.0
+  firebase_auth: ^3.3.11
+  firebase_core: ^1.13.1
 
 
 dev_dependencies:
