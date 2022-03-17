@@ -51,7 +51,7 @@ class _ArticlePageState extends State<ArticlePage> {
                               onConfirmation: () {
                                 context.read<ArticlesBloc>().add(
                                       DeleteSavedArticle(
-                                        articleId: widget.article.id!,
+                                        articleId: widget.article.id,
                                       ),
                                     );
                                 Navigator.of(context).pop();
