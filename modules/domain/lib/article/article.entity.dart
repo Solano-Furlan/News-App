@@ -1,7 +1,7 @@
 import 'package:uuid/uuid.dart';
 
 class ArticleModel {
-  final String? id;
+  final String id;
   final String? source;
   final String? author;
   final String? url;
@@ -12,7 +12,7 @@ class ArticleModel {
   final String? content;
 
   ArticleModel({
-    this.id,
+    required this.id,
     this.source,
     this.author,
     this.url,

@@ -14,8 +14,8 @@ void main() {
     test("Get headlines event returns a list of articles", () async* {
       when(articleRepository.getTopHeadlines()).thenAnswer(
         (_) async => [
-          ArticleModel(),
-          ArticleModel(),
+          ArticleModel(id: "1"),
+          ArticleModel(id: "2"),
         ],
       );
 
