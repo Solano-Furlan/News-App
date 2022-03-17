@@ -18,8 +18,8 @@ void main() {
         dio.httpClientAdapter = dioAdapter;
         articlesRepo = ArticleRepoImpl(
             backend: Backend(
-          apiKey: "",
-          backendUrl: "",
+          newsApiKey: "",
+          newsApiUrl: "",
           dioClient: dio,
         ));
       });

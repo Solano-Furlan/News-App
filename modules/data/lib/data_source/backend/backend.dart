@@ -1,16 +1,16 @@
 import 'package:dio/dio.dart';
 
 class Backend {
-  final String backendUrl;
-  final String apiKey;
+  final String newsApiUrl;
+  final String newsApiKey;
   final Dio dioClient;
   Backend({
-    required this.backendUrl,
+    required this.newsApiUrl,
     required this.dioClient,
-    required this.apiKey,
+    required this.newsApiKey,
   }) {
-    dioClient.options.baseUrl = backendUrl;
-    dioClient.options.queryParameters = {"apiKey": apiKey};
+    dioClient.options.baseUrl = newsApiUrl;
+    dioClient.options.queryParameters = {"apiKey": newsApiKey};
   }
 
   Future getHeadlines() async {
