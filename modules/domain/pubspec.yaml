@@ -11,6 +11,8 @@ dependencies:
   flutter:
     sdk: flutter
   uuid: ^3.0.6
+  core: 
+    path: "../core"
 
 
 dev_dependencies:
