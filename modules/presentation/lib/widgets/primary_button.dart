@@ -32,7 +32,7 @@ class PrimaryButton extends StatelessWidget {
           elevation: 0,
           primary: disabled ? AppColors.lightGray : color,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(58),
+            borderRadius: BorderRadius.circular(12),
           ),
         ),
         child: SizedBox(

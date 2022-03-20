@@ -17,6 +17,7 @@ class FlexibleHealineHeader extends StatelessWidget {
     return SliverOverlapAbsorber(
       handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
       sliver: SliverAppBar(
+        leading: const SizedBox(),
         collapsedHeight: 100,
         expandedHeight: 450,
         pinned: true,
@@ -98,7 +99,9 @@ class FlexibleHealineHeader extends StatelessWidget {
                                 padding: const EdgeInsets.all(0),
                                 splashRadius: 34,
                                 alignment: Alignment.centerLeft,
-                                onPressed: () {},
+                                onPressed: () {
+                                  Scaffold.of(context).openDrawer();
+                                },
                                 icon: const Icon(
                                   Icons.menu,
                                   color: Colors.white,

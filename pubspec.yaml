@@ -22,6 +22,7 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   auto_route: ^3.2.4
+  flutter_svg: ^1.0.3
   responsive_framework: ^0.1.7
   dio: ^4.0.4
   get_it: ^7.2.0

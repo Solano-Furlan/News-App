@@ -1,14 +1,18 @@
-import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:news_app/pages/article.dart';
-import 'package:news_app/pages/headlines.dart';
-import 'package:news_app/pages/home.dart';
-import 'package:news_app/pages/saved_articles.dart';
-import 'package:news_app/pages/search.dart';
+import 'package:news_app/pages/auth/login.dart';
+import 'package:news_app/pages/main/article.dart';
+import 'package:news_app/pages/main/headlines.dart';
+import 'package:news_app/pages/main/home.dart';
+import 'package:news_app/pages/main/saved_articles.dart';
+import 'package:news_app/pages/main/search.dart';
 
 @MaterialAutoRouter(
   replaceInRouteName: 'Page,Route',
   routes: <AutoRoute>[
+    AutoRoute(
+      path: 'login',
+      page: LoginPage,
+    ),
     AutoRoute(path: '/', page: HomePage, children: [
       AutoRoute(
         path: 'search',
