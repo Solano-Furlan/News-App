@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:news_app/routes/routes.gr.dart';
-import 'package:presentation/widgets/botoom_app_bar.dart';
+import 'package:presentation/presentation.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 
 class HomePage extends StatelessWidget {
@@ -22,6 +22,9 @@ class HomePage extends StatelessWidget {
         builder: (context, child, animation) {
           final tabsRouter = AutoTabsRouter.of(context);
           return Scaffold(
+            drawer: const Drawer(
+              child: AppDrawer(loginRoute: LoginRoute()),
+            ),
             body: Column(
               children: [
                 Expanded(
