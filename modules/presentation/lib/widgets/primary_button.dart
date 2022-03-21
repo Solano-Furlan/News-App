@@ -8,14 +8,14 @@ class PrimaryButton extends StatelessWidget {
   final bool isLoading;
   final Widget? leadingIcon;
   final Widget? trailingIcon;
-  final bool disabled;
+  final bool isDisabled;
   final Function()? onPressed;
   const PrimaryButton({
     Key? key,
     this.color = AppColors.primaryColor,
     this.text,
     this.isLoading = false,
-    this.disabled = false,
+    this.isDisabled = false,
     this.onPressed,
     this.leadingIcon,
     this.trailingIcon,
@@ -25,14 +25,14 @@ class PrimaryButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IgnorePointer(
-      ignoring: isLoading || disabled,
+      ignoring: isLoading || isDisabled,
       child: ElevatedButton(
         onPressed: () => onPressed != null ? onPressed!() : null,
         style: ElevatedButton.styleFrom(
           elevation: 0,
-          primary: disabled ? AppColors.lightGray : color,
+          primary: isDisabled ? AppColors.lightGray : color,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(58),
+            borderRadius: BorderRadius.circular(12),
           ),
         ),
         child: SizedBox(
@@ -65,7 +65,8 @@ class PrimaryButton extends StatelessWidget {
                       text ?? '',
                       style: TextStyle(
                         fontSize: 20,
-                        color: disabled ? AppColors.kGrey.shade400 : textColor,
+                        color:
+                            isDisabled ? AppColors.kGrey.shade400 : textColor,
                         fontWeight: FontWeight.bold,
                       ),
                     ),

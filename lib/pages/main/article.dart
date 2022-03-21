@@ -36,7 +36,7 @@ class _ArticlePageState extends State<ArticlePage> {
                             .any((e) => e.id == widget.article.id) ==
                         false) {
                       context.read<ArticlesBloc>().add(
-                            SaveArticle(
+                            SaveArticleEvent(
                               article: widget.article,
                             ),
                           );
@@ -50,8 +50,8 @@ class _ArticlePageState extends State<ArticlePage> {
                                   "Are you sure that you want to remove this article from the saved list?",
                               onConfirmation: () {
                                 context.read<ArticlesBloc>().add(
-                                      DeleteSavedArticle(
-                                        articleId: widget.article.id!,
+                                      DeleteSavedArticleEvent(
+                                        articleId: widget.article.id,
                                       ),
                                     );
                                 Navigator.of(context).pop();

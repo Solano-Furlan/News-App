@@ -5,11 +5,11 @@ import 'package:presentation/theme/colors.dart';
 class PrimaryTextField extends StatefulWidget {
   final String hint;
   final String? label;
-  final String initVal;
   final TextInputType keyboardType;
   final bool isRequired;
   final bool isEmail;
   final double radius;
+  final TextEditingController controller;
   final bool whiteBackground;
   final bool isPassword;
   final IconData? trailingIcon;
@@ -22,12 +22,12 @@ class PrimaryTextField extends StatefulWidget {
 
   const PrimaryTextField({
     Key? key,
+    required this.controller,
     required this.hint,
     this.label,
     this.autofocus = false,
     this.whiteBackground = false,
     this.keyboardType = TextInputType.text,
-    required this.initVal,
     this.onChanged,
     this.toMatch,
     this.radius = 12,
@@ -50,7 +50,7 @@ class _PrimaryTextFieldState extends State<PrimaryTextField> {
 
   @override
   void initState() {
-    currentValue = widget.initVal;
+    currentValue = widget.controller.text;
     _isPassword = widget.isPassword;
     super.initState();
   }
@@ -84,7 +84,7 @@ class _PrimaryTextFieldState extends State<PrimaryTextField> {
                   fontSize: 20,
                   color: Colors.black,
                 ),
-                initialValue: widget.initVal,
+                controller: widget.controller,
                 keyboardType: widget.keyboardType,
                 textCapitalization: widget.isEmail
                     ? TextCapitalization.none
