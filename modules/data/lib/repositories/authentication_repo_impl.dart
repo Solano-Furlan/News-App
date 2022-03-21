@@ -47,7 +47,7 @@ class AuthenticationRepoImpl extends AuthenticationRepository {
       {required String email, required String password}) async {
     try {
       await firebaseAuth.createUserWithEmailAndPassword(
-          email: email, password: password);
+          email: email.trim(), password: password);
 
       User user = firebaseAuth.currentUser!;
       if (user.emailVerified) {
@@ -83,7 +83,7 @@ class AuthenticationRepoImpl extends AuthenticationRepository {
       {required String email, required String password}) async {
     try {
       await firebaseAuth.signInWithEmailAndPassword(
-          email: email, password: password);
+          email: email.trim(), password: password);
       firebaseAuth.currentUser!.getIdToken().then((value) => {});
       User user = firebaseAuth.currentUser!;
       if (user.emailVerified) {
