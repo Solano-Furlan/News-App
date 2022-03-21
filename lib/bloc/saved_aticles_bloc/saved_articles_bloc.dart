@@ -9,8 +9,8 @@ part 'saved_articles_state.dart';
 class ArticlesBloc extends Bloc<SavedArticlesEvent, SavedArticlesState> {
   ArticlesBloc() : super(ArticlesInitial()) {
     on<GetSavedArticles>(_onGetSavedArticles);
-    on<SaveArticle>(_onSaveArticle);
-    on<DeleteSavedArticle>(_onDeleteSavedArticle);
+    on<SaveArticleEvent>(_onSaveArticle);
+    on<DeleteSavedArticleEvent>(_onDeleteSavedArticle);
   }
 
   void _onGetSavedArticles(
@@ -18,7 +18,8 @@ class ArticlesBloc extends Bloc<SavedArticlesEvent, SavedArticlesState> {
     emit(SavedArticlesLoaded(savedArticles: event.articles));
   }
 
-  void _onSaveArticle(SaveArticle event, Emitter<SavedArticlesState> emit) {
+  void _onSaveArticle(
+      SaveArticleEvent event, Emitter<SavedArticlesState> emit) {
     final state = this.state;
     if (state is SavedArticlesLoaded) {
       emit(
@@ -31,7 +32,7 @@ class ArticlesBloc extends Bloc<SavedArticlesEvent, SavedArticlesState> {
   }
 
   void _onDeleteSavedArticle(
-      DeleteSavedArticle event, Emitter<SavedArticlesState> emit) {
+      DeleteSavedArticleEvent event, Emitter<SavedArticlesState> emit) {
     final state = this.state;
     if (state is SavedArticlesLoaded) {
       emit(

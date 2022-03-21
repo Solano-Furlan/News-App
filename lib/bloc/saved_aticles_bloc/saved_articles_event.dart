@@ -11,17 +11,17 @@ class GetSavedArticles extends SavedArticlesEvent {
   List<Object> get props => [articles];
 }
 
-class SaveArticle extends SavedArticlesEvent {
+class SaveArticleEvent extends SavedArticlesEvent {
   final ArticleModel article;
-  SaveArticle({required this.article});
+  SaveArticleEvent({required this.article});
 
   @override
   List<Object> get props => [article];
 }
 
-class DeleteSavedArticle extends SavedArticlesEvent {
+class DeleteSavedArticleEvent extends SavedArticlesEvent {
   final String articleId;
-  DeleteSavedArticle({required this.articleId});
+  DeleteSavedArticleEvent({required this.articleId});
 
   @override
   List<Object> get props => [articleId];
