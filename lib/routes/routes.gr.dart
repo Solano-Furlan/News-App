@@ -11,7 +11,8 @@
 // ignore_for_file: type=lint
 
 import 'package:auto_route/auto_route.dart' as _i7;
-import 'package:domain/article/article.entity.dart' as _i9;
+import 'package:core/core.dart' as _i9;
+import 'package:domain/article/article.entity.dart' as _i10;
 import 'package:flutter/material.dart' as _i8;
 
 import '../pages/auth/login.dart' as _i1;
@@ -28,8 +29,10 @@ class AppRouter extends _i7.RootStackRouter {
   @override
   final Map<String, _i7.PageFactory> pagesMap = {
     LoginRoute.name: (routeData) {
+      final args = routeData.argsAs<LoginRouteArgs>();
       return _i7.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i1.LoginPage());
+          routeData: routeData,
+          child: _i1.LoginPage(key: args.key, pageType: args.pageType));
     },
     HomeRoute.name: (routeData) {
       return _i7.MaterialPageX<dynamic>(
@@ -72,10 +75,25 @@ class AppRouter extends _i7.RootStackRouter {
 
 /// generated route for
 /// [_i1.LoginPage]
-class LoginRoute extends _i7.PageRouteInfo<void> {
-  const LoginRoute() : super(LoginRoute.name, path: 'login');
+class LoginRoute extends _i7.PageRouteInfo<LoginRouteArgs> {
+  LoginRoute({_i8.Key? key, required _i9.PageType pageType})
+      : super(LoginRoute.name,
+            path: 'login', args: LoginRouteArgs(key: key, pageType: pageType));
 
   static const String name = 'LoginRoute';
+}
+
+class LoginRouteArgs {
+  const LoginRouteArgs({this.key, required this.pageType});
+
+  final _i8.Key? key;
+
+  final _i9.PageType pageType;
+
+  @override
+  String toString() {
+    return 'LoginRouteArgs{key: $key, pageType: $pageType}';
+  }
 }
 
 /// generated route for
@@ -90,7 +108,7 @@ class HomeRoute extends _i7.PageRouteInfo<void> {
 /// generated route for
 /// [_i3.ArticlePage]
 class ArticleRoute extends _i7.PageRouteInfo<ArticleRouteArgs> {
-  ArticleRoute({_i8.Key? key, required _i9.ArticleModel article})
+  ArticleRoute({_i8.Key? key, required _i10.ArticleModel article})
       : super(ArticleRoute.name,
             path: '/article-page',
             args: ArticleRouteArgs(key: key, article: article));
@@ -103,7 +121,7 @@ class ArticleRouteArgs {
 
   final _i8.Key? key;
 
-  final _i9.ArticleModel article;
+  final _i10.ArticleModel article;
 
   @override
   String toString() {
