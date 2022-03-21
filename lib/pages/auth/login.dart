@@ -3,6 +3,7 @@ import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:news_app/app.dart';
 import 'package:news_app/bloc/login_bloc/login_bloc.dart';
 import 'package:news_app/routes/routes.gr.dart';
 import 'package:presentation/presentation.dart';
@@ -16,6 +17,8 @@ class LoginPage extends StatelessWidget {
 
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  static GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey =
+      GlobalKey<ScaffoldMessengerState>();
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +26,24 @@ class LoginPage extends StatelessWidget {
       listener: (context, state) {
         if (state is LoginSuccessful) {
           AutoRouter.of(context).replaceAll([const HomeRoute()]);
+        }
+        if (state is LoginEmailInUseError) {
+          _showSnackBarError(
+            context: context,
+            text: "This email is already in use",
+          );
+        }
+        if (state is LoginWrongEmailError) {
+          _showSnackBarError(
+            context: context,
+            text: "There is no account with this email",
+          );
+        }
+        if (state is LoginWrongPasswordError) {
+          _showSnackBarError(
+            context: context,
+            text: "Wrong password",
+          );
         }
       },
       builder: (context, state) {
@@ -142,6 +163,17 @@ class LoginPage extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+
+  void _showSnackBarError(
+      {required BuildContext context, required String text}) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        backgroundColor: AppColors.red,
+        duration: const Duration(seconds: 3),
+        content: PrimarySnackBar(text: text),
+      ),
     );
   }
 }
