@@ -34,7 +34,7 @@ jobs:
           channel: "stable"
       - run: flutter pub get
       - run: flutter clean
-      - run: flutter build ios --release --no-codesign
+      # - run: flutter build ios --release --no-codesign
 
   build_appbundle:
     needs: [flutter_test]
