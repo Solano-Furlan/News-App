@@ -3,7 +3,6 @@ import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:news_app/app.dart';
 import 'package:news_app/bloc/login_bloc/login_bloc.dart';
 import 'package:news_app/routes/routes.gr.dart';
 import 'package:presentation/presentation.dart';
