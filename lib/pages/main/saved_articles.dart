@@ -31,7 +31,7 @@ class SavedArticlesPage extends StatelessWidget {
                 padding: const EdgeInsets.all(0),
                 splashRadius: 34,
                 alignment: Alignment.centerLeft,
-                onPressed: () {},
+                onPressed: () => Scaffold.of(context).openDrawer(),
                 icon: const Icon(
                   Icons.menu,
                   color: Colors.white,

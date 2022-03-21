@@ -14,3 +14,4 @@ export 'widgets/flexible_search_header.dart';
 export 'widgets/confimation_popup.dart';
 export 'widgets/drawer.dart';
 export 'widgets/primary_text_button.dart';
+export 'widgets/snack_bar.dart';

@@ -69,7 +69,7 @@ class _FlexibleSearchHeaderState extends State<FlexibleSearchHeader> {
                     child: Row(
                       children: [
                         IconButton(
-                          onPressed: () {},
+                          onPressed: () => Scaffold.of(context).openDrawer(),
                           iconSize: 34,
                           padding: const EdgeInsets.all(0),
                           splashRadius: 34,
